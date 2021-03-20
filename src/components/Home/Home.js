@@ -12,25 +12,26 @@ const Home = () => {
 
     //runs after every render
     //dont change state inside bc of cont' loop effect
-    //an empty array : if only want to run the function once on the 1st render
+    //an empty array : if only want to run the function once on the 1st/initial render and NOT whenever it renders.
     useEffect( () => {
         fetch('http://localhost:8000/blogs')
             .then( res => {
                 return res.json();
             })
             .then(( data ) => {
-                console.log( data )
+                console.log( data );
+                setBlogs( data );
             })
     }, [ ])
     
 
     return ( 
         <div className="home">
-            {/* <BlogList 
+            <BlogList 
                 blogs={ blogs }  
                 title="All Blogs!"
                 handleDelete={ handleDelete } 
-            /> */}
+            />
         </div>
      );
 }
