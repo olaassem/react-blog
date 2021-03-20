@@ -1,20 +1,30 @@
 import { useState }  from 'react';
 
 const Home = () => {
-
-    const [name, setName] = useState('Mario');
-    const [age, setAge] = useState(25);
-
-    const handleClick = () => {
-        setName('Luigi');
-        setAge(30);
-    }
+    const [blogs, setBlogs] = useState([
+        {
+            title: 'Outwitting Squirrels',
+            body: 'Lorem ipsum...',
+            author: 'Jack Heise',
+            id: 1
+        },
+        {
+            title: 'Talking with Trees',
+            body: 'Lorem ipsum...',
+            author: 'P. L. McSweeny',
+            id: 2
+        },
+        {
+            title: 'A Passion for Donkeys',
+            body: 'Lorem ipsum...',
+            author: 'Dr. Elisabeth Svendson',
+            id: 3
+        }
+    ]);
 
     return ( 
         <div className="home">
-            <h2>Homepage</h2>
-            <p>{ name } is { age } years old.</p>
-            <button onClick={ handleClick }>Click Me</button>
+
         </div>
      );
 }
