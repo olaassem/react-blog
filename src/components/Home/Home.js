@@ -24,16 +24,21 @@ const Home = () => {
         }
     ]);
 
+    const [name, setName] = useState('Mario');
+
     const handleDelete = ( id ) => {
         const newBlogs = blogs.filter( blog => blog.id !== id );
         setBlogs(newBlogs);
     }
 
-    //runs whenever the dom renders
+    //runs after every render
     //dont change state inside bc of cont' loop effect
+    //an empty array : if only want to run the function once on the 1st render
+    //
     useEffect( () => {
-        console.log('useEffect RAN!')
-    })
+        console.log( 'useEffect RAN!' )
+        console.log( name )
+    }, [ name ])
     
 
     return ( 
@@ -43,6 +48,8 @@ const Home = () => {
                 title="All Blogs!"
                 handleDelete={ handleDelete } 
             />
+            <button onClick={() => setName('Luigi')}>Change Name</button>
+            <p>{ name }</p>
         </div>
      );
 }
