@@ -1,4 +1,4 @@
-import { useState }  from 'react';
+import { useState, useEffect }  from 'react';
 
 import BlogList from '../BlogList/BlogList';
 
@@ -28,6 +28,13 @@ const Home = () => {
         const newBlogs = blogs.filter( blog => blog.id !== id );
         setBlogs(newBlogs);
     }
+
+    //runs whenever the dom renders
+    //dont change state inside bc of cont' loop effect
+    useEffect( () => {
+        console.log('useEffect RAN!')
+    })
+    
 
     return ( 
         <div className="home">
