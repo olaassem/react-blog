@@ -14,17 +14,23 @@ const Home = () => {
     //dont change state inside bc of cont' loop effect
     //an empty array : if only want to run the function once on the 1st render
     useEffect( () => {
-        console.log( 'useEffect RAN!' )
+        fetch('http://localhost:8000/blogs')
+            .then( res => {
+                return res.json();
+            })
+            .then(( data ) => {
+                console.log( data )
+            })
     }, [ ])
     
 
     return ( 
         <div className="home">
-            <BlogList 
+            {/* <BlogList 
                 blogs={ blogs }  
                 title="All Blogs!"
                 handleDelete={ handleDelete } 
-            />
+            /> */}
         </div>
      );
 }
