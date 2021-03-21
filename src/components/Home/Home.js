@@ -11,7 +11,12 @@ const Home = () => {
     //an empty array : if only want to run the function once on the 1st/initial render and NOT whenever it renders.
     useEffect( () => {
         fetch('http://localhost:8000/blogs')
+        //check if res is not ok (something wrong w data)
             .then( res => {
+                if ( !res.ok ) {    
+                    throw Error('Could not fetch data for that resource');
+                }
+                console.log(res)
                 return res.json();
             })
             .then(( data ) => {
@@ -19,6 +24,9 @@ const Home = () => {
                 setBlogs( data );
                 setIsLoading( false );
             })
+            .catch( err => {
+                console.log(err.message);
+            });
     }, [ ])
     
 
