@@ -9,8 +9,13 @@ const useFetch = ( url ) => {
     //runs after every render
     //dont change state inside bc of cont' loop effect
     //an empty array : if only want to run the function once on the 1st/initial render and NOT whenever it renders.
+
+    //place cleanup function inside useeffect and return it
     useEffect( () => {
-        fetch( url )
+        //associate it w a specific fetch controller to stop the fetch using the signal property
+        const abortCont = new AbortController();
+
+        fetch( url,  { signal: abortCont.signal } )
         //check if res is not ok (something wrong w data)
             .then( res => {
                 if ( !res.ok ) {    
@@ -31,6 +36,10 @@ const useFetch = ( url ) => {
                 setIsLoading( false );
                 setError( err.message );
             });
+
+            //aborts whatever fetch it is associated with
+            return () => abortCont.abort();
+
             //add url as a dependency to useEffect: whenever url changes, run data again
     }, [ url ])
 
