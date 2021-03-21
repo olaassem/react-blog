@@ -1,6 +1,6 @@
 import { useState, useEffect }  from 'react';
 
-const useFetch = () => {
+const useFetch = ( url ) => {
 
     const [ data, setData ] = useState( null );
     const [ isLoading, setIsLoading ] = useState( null );
@@ -10,7 +10,7 @@ const useFetch = () => {
     //dont change state inside bc of cont' loop effect
     //an empty array : if only want to run the function once on the 1st/initial render and NOT whenever it renders.
     useEffect( () => {
-        fetch('http://localhost:8000/blogs')
+        fetch( url )
         //check if res is not ok (something wrong w data)
             .then( res => {
                 if ( !res.ok ) {    
@@ -32,6 +32,10 @@ const useFetch = () => {
                 setError( err.message );
             });
     }, [ ])
+
+    //return whatever values you want in custom hooks
+    //prefer to use objects bc then the order of the values don't matter when destructuring them.
+    return { data, isLoading, error };
 };
 
 export default useFetch;
