@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 const Create = () => {
     const [ title, setTitle ] = useState('');
-    const [ author, setAuthor ] = useState('');
+    const [ author, setAuthor ] = useState('Mario');
     const [ body, setBody ] = useState('');
     const [ isPending, setIsPending ] = useState( false );
     const history = useHistory();
