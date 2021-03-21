@@ -9,7 +9,10 @@ function App() {
       <div className="App">
         <Navbar />
         <div className="content">
-          <Home />
+          {/* only 1 route shows at any one time */}
+          <Switch>
+            <Route path="/"><Home /></Route>
+          </Switch>
         </div>
       </div>
     </Router>
