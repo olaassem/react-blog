@@ -24,10 +24,13 @@ const Home = () => {
                 // console.log( data );
                 setBlogs( data );
                 setIsLoading( false );
+                setError( null );
+
             })
             .catch( err => {
                 // console.log(err.message);
-                setError(err.message);
+                setIsLoading( false );
+                setError( err.message );
             });
     }, [ ])
     
