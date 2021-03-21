@@ -3,8 +3,9 @@ import { useState, useEffect }  from 'react';
 import BlogList from '../BlogList/BlogList';
 
 const Home = () => {
-    const [blogs, setBlogs] = useState( null );
-    const [isLoading, setIsLoading] = useState( null );
+    const [ blogs, setBlogs ] = useState( null );
+    const [ isLoading, setIsLoading ] = useState( null );
+    const [ error, setError ] = useState( null );
  
     //runs after every render
     //dont change state inside bc of cont' loop effect
@@ -14,9 +15,9 @@ const Home = () => {
         //check if res is not ok (something wrong w data)
             .then( res => {
                 if ( !res.ok ) {    
-                    throw Error('Could not fetch data for that resource');
+                    throw Error('Could not fetch data for that resource.');
                 }
-                console.log(res)
+                // console.log(res)
                 return res.json();
             })
             .then(( data ) => {
@@ -25,14 +26,16 @@ const Home = () => {
                 setIsLoading( false );
             })
             .catch( err => {
-                console.log(err.message);
+                // console.log(err.message);
+                setError(err.message);
             });
     }, [ ])
     
 
     return ( 
         <div className="home">
-             { isLoading && <div>Loading...</div> }
+            { error && <div>{ error }</div>}
+            { isLoading && <div>Loading...</div> }
             { blogs &&  <BlogList blogs={ blogs }  title="All Blogs!" /> }
         </div>
      );
