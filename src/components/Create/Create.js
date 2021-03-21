@@ -19,7 +19,8 @@ const Create = () => {
                     <option value="luigi">Luigi</option>
                 </select>
             </form>
-        </div> );
+        </div> 
+    );
 }
  
 export default Create;
