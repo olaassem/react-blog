@@ -1,7 +1,7 @@
 const Create = () => {
     return ( 
         <div className="create">
-            Add a new blog.
+            <h1>Add a New Blog</h1>
         </div> );
 }
  
