@@ -1,7 +1,24 @@
 const Create = () => {
     return ( 
         <div className="create">
-            <h1>Add a New Blog</h1>
+            <h2>Add a New Blog</h2>
+            <form>
+                <label>Blog title:</label>
+                <input 
+                    type="text" 
+                    required
+                />
+                <label>Blog body:</label>
+                <textarea 
+                    required
+                >
+                </textarea>
+                <label>Author:</label>
+                <select>
+                    <option value="mario">Mario</option>
+                    <option value="luigi">Luigi</option>
+                </select>
+            </form>
         </div> );
 }
  
