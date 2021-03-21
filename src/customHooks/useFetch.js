@@ -33,8 +33,12 @@ const useFetch = ( url ) => {
             })
             .catch( err => {
                 // console.log(err.message);
-                setIsLoading( false );
-                setError( err.message );
+                if (err.name === 'AbortError') {
+                    console.log('fetch aborted');
+                } else {
+                    setIsLoading( false );
+                    setError( err.message );
+                };
             });
 
             //aborts whatever fetch it is associated with
