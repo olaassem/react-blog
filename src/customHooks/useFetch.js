@@ -31,7 +31,8 @@ const useFetch = ( url ) => {
                 setIsLoading( false );
                 setError( err.message );
             });
-    }, [ ])
+            //add url as a dependency to useEffect: whenever url changes, run data again
+    }, [ url ])
 
     //return whatever values you want in custom hooks
     //prefer to use objects bc then the order of the values don't matter when destructuring them.
